@@ -1,17 +1,16 @@
 require 'prime'
 
-class FindPrime
-
-    def prime_easy(num)
-        Prime.each(num) {|n| p n}
+class FindPrimes
+    def prime_auto(num)
+        (2..num).map{ |n| Prime.prime?(n) ? n : nil}.compact
     end
 
-    def prime_less_easy(num)
-        (2..num).map{ |n| primer(n) }.compact
+    def prime_manual(num)
+        (2..num).map{ |n| is_prime?(n) }.compact
     end
 
     private
-    def primer(num)
+    def is_prime?(num)
         (num-2).times {|i| return nil if (num.%(i+2) == 0) }
         num
     end
