@@ -3,12 +3,12 @@ class Count
 
     def coins(num)
         @@dict.reduce( {TOTAL: num, Pennies: num} ) do |acc, (key, val)|
-            acc[key] = (acc[:Pennies] >= val) ? (acc[:Pennies]/val).floor : 0
+            acc[key] = (acc[:Pennies]/val).floor
             acc[:Pennies] -= (acc[key] * val)
             acc
         end
     end
 end
 
-puts Count.new.coins(46)
+puts Count.new.coins(31)
 # acc[:Pennies] = acc.delete(:Pennies)
